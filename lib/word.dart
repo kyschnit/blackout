@@ -11,6 +11,14 @@ class Word extends StatefulWidget {
 
 class _WordState extends State<Word> {
   bool _blackedOut = false;
+  bool _hovered = false;
+
+  void _hover(PointerEvent e) {
+    setState(() {
+      _hovered = !_hovered;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,10 +27,15 @@ class _WordState extends State<Word> {
           _blackedOut = !_blackedOut;
         });
       },
-      child: Container(
-        color: _blackedOut ? Colors.black : Colors.white,
-        child: Text(widget.text)
-      ),
+      child: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: _blackedOut || _hovered ? Colors.black : Colors.transparent)),
+          child: MouseRegion(
+              onEnter: _hover,
+              onExit: _hover,
+              child: Text(style: const TextStyle(fontSize: 25), widget.text))),
     );
   }
 }
