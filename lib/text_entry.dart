@@ -1,3 +1,4 @@
+import 'package:blackout/ocr.dart';
 import 'package:flutter/material.dart';
 import 'package:blackout/blackout_select.dart';
 
@@ -80,6 +81,10 @@ class _TextEntryState extends State<TextEntry> {
             ),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [ImageProcessing()],
+        )
       ],
     );
   }

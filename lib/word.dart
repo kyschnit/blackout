@@ -31,7 +31,9 @@ class _WordState extends State<Word> {
           duration: const Duration(milliseconds: 500),
           decoration: BoxDecoration(
               border: Border.all(
-                  color: _blackedOut || _hovered ? Colors.black : Colors.transparent)),
+                  color: _blackedOut || _hovered
+                      ? Colors.black
+                      : Colors.transparent)),
           child: MouseRegion(
               onEnter: _hover,
               onExit: _hover,
